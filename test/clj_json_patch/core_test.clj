@@ -30,6 +30,12 @@
              patches [{"op" "add" "path" "/foo/1" "value" "qux"}]]
          (fact "Adding a second Array Element"
                (diff obj1 obj2) => patches))
+       (let [obj1 {"foo" ["bar"]}
+             obj2 {"foo" ["bar" "qux" "baz"]}
+             patches [{"op" "add" "path" "/foo/1" "value" "qux"}
+                      {"op" "add" "path" "/foo/2" "value" "baz"}]]
+         (fact "Adding some Array Elements"
+               (diff obj1 obj2) => patches))
        (let [obj1 {"foo" "bar" "baz" "qux"}
              obj2 {"foo" "bar"}
              patches [{"op" "remove" "path" "/baz"}]]
@@ -49,6 +55,12 @@
              obj2 {"foo" ["bar" "baz"]}
              patches [{"op" "remove" "path" "/foo/2"}]]
          (fact "Removing subsequent Array Element"
+               (diff obj1 obj2) => patches))
+       (let [obj1 {"foo" ["bar" "baz" "qux"]}
+             obj2 {"foo" ["bar"]}
+             patches [{"op" "remove" "path" "/foo/1"}
+                      {"op" "remove" "path" "/foo/2"}]]
+         (fact "Removing some subsequent Array Elements"
                (diff obj1 obj2) => patches))
        (let [obj1 {"foo" "bar" "baz" "qux"}
              obj2 {"baz" "boo" "foo" "bar"}
