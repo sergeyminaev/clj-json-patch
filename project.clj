@@ -1,4 +1,4 @@
-(defproject org.clojars.sergeyminaev/clj-json-patch "0.1.7"
+(defproject org.clojars.sergeyminaev/clj-json-patch "0.1.7.1"
   :description "Clojure implementation of http://tools.ietf.org/html/rfc6902"
   :url "https://github.com/sergeyminaev/clj-json-patch"
   :license {:name "Eclipse Public License"
